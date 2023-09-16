@@ -27,6 +27,7 @@ class amp extends Command
    */
   public function handle()
   {
-    //
+    // info 
+    $this->info('Installing AMP...');
   }
 }
