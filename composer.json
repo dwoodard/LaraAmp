@@ -1,0 +1,44 @@
+{
+  "name": "dwoodard/laraamp",
+  "description": ":package_description",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dustin Woodard",
+      "email": "dustin.woodard@gmail.com",
+      "homepage": "http://dustinwoodard.net"
+    }
+  ],
+  "homepage": "https://github.com/dwoodard/laraamp",
+  "keywords": [
+    "Laravel",
+    "Laraamp"
+  ],
+  "require": {
+    "illuminate/support": "~9|~10"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~9.0",
+    "orchestra/testbench": "~7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dwoodard\\Laraamp\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Dwoodard\\Laraamp\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Dwoodard\\Laraamp\\LaraampServiceProvider"
+      ],
+      "aliases": {
+        "Laraamp": "Dwoodard\\Laraamp\\Facades\\Laraamp"
+      }
+    }
+  }
+}
