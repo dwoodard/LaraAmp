@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Dwoodard\Laraamp\Commands;
 
 use Illuminate\Console\Command;
 
