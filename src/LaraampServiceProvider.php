@@ -76,8 +76,10 @@ class LaraampServiceProvider extends ServiceProvider
         ], 'laraamp.lang');*/
 
     // Registering package commands.
-    $this->commands([
-      \Dwoodard\Laraamp\Commands\AmpCommand::class,
-    ]);
+    if ($this->app->runningInConsole()) {
+      $this->commands([
+        \Dwoodard\Laraamp\Console\Commands\AmpCommand::class,
+      ]);
+    }
   }
 }
