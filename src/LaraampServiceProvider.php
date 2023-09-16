@@ -78,7 +78,7 @@ class LaraampServiceProvider extends ServiceProvider
 
     // Registering package commands.
     $this->commands([
-      LaraampCommand::class,
+      Commands\LoadAmp::class,
     ]);
   }
 }
