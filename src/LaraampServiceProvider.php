@@ -19,8 +19,9 @@ class LaraampServiceProvider extends ServiceProvider
     // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
     // Publishing is only necessary when using the CLI.
-
-    $this->bootForConsole();
+    if ($this->app->runningInConsole()) {
+      $this->bootForConsole();
+    }
   }
 
   /**
@@ -76,10 +77,9 @@ class LaraampServiceProvider extends ServiceProvider
         ], 'laraamp.lang');*/
 
     // Registering package commands.
-    if ($this->app->runningInConsole()) {
-      $this->commands([
-        \Dwoodard\Laraamp\Console\Commands\AmpCommand::class,
-      ]);
-    }
+
+    $this->commands([
+      \Dwoodard\Laraamp\Console\Commands\AmpCommand::class,
+    ]);
   }
 }
