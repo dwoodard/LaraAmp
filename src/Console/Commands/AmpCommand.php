@@ -217,7 +217,9 @@ class AmpCommand extends Command
       // if common is selected, copy the common directory to the root of the project
       if (in_array('common', $installs)) {
         $this->info('   - common stubs will be installed');
-        recursiveCopy($srcDirectory . '/stubs/common', base_path(''));
+
+        recursiveCopy($srcDirectory . '/stubs/common/root', base_path(''));
+        recursiveCopy($srcDirectory . '/stubs/common/app', app_path(''));
       }
 
       // if livewire is selected, copy the livewire directory to the root of the project
