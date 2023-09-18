@@ -14,16 +14,16 @@ class AmpCommand extends Command
    *
    * @var string
    */
-  protected $signature = 'amp:install
-   
-  ';
+  protected $signature = 'amp:install';
 
   /**
    * The console command description.
    *
    * @var string
    */
-  protected $description = ' Install AMP for Laravel ';
+
+
+  protected $description = ' LaraAMP is a Laravel package that will run a command that will ask you what you want to install. (Laradock, Stubs, Composer.json) ';
 
   /**
    * Execute the console command.
@@ -46,6 +46,18 @@ class AmpCommand extends Command
   //install laradock and update .env files
   private function LaradockInstall()
   {
+
+    $installLaradock = $this->choice("Would you like to install Laradock?", ['yes', 'no'], 'yes');
+
+    //installLaradock
+    if ($installLaradock == 'no') {
+      $this->info('Laradock will not be installed');
+      $this->newLine(3);
+      return;
+    }
+
+
+
     $this->info('Installing Laradock');
 
     $this->info('- Clone laradock');
@@ -76,7 +88,11 @@ class AmpCommand extends Command
     //update .env for laravel
     $filename = base_path() . '/.env';
     $env = file_get_contents($filename);
+
+
     $this->info("- Checking Laravel .env:");
+
+
     if (!str_contains($env, 'DB_HOST=mysql')) {
       $env = preg_replace("/DB_HOST=.*/", "DB_HOST=mysql", $env);
       $this->info('   - DB_HOST has been saved');
@@ -140,6 +156,7 @@ class AmpCommand extends Command
       '/data/',
       '!/laradock/.env',
     ];
+
     foreach ($gitignoreChecks as $check) {
       if (!str_contains($gitignore, $check)) {
         file_put_contents(base_path() . '/.gitignore', $check . "\n", FILE_APPEND | LOCK_EX);
@@ -194,7 +211,7 @@ class AmpCommand extends Command
 
     $overwrite = $this->confirm('Stubs will be overwritten if they already exist', true);
     if ($overwrite) {
-      $this->info('   - Stubs will be overwritten');
+      $this->info('   - Stubs will be over write what is already there');
 
 
       // if common is selected, copy the common directory to the root of the project
