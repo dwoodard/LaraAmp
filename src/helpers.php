@@ -55,7 +55,7 @@ if (!function_exists('recursiveCopy')) {
           recursiveCopy($src . '/' . $file, $dst . '/' . $file);
         } else {
           copy($src . '/' . $file, $dst . '/' . $file);
-          chmod($dst . '/' . $file, 0777);
+          chmod($dst . '/' . $file, 0766);
         }
       }
     }
